@@ -6,8 +6,7 @@ const WIX_API_KEY = process.env.WIX_API_KEY;
 const WIX_SITE_ID = process.env.WIX_SITE_ID;
 
 const SHOW_KEYWORDS = [
-  { keyword: "Baseball", showId: "SHOW_ID_1" },
-  { keyword: "Football", showId: "SHOW_ID_2" }
+  { keyword: "The Insiders Show", showId: "14ef63df-3b78-4cee-a3d7-da89fc7fc871" }
 ];
 
 async function fetchRecentVideos() {
@@ -70,8 +69,15 @@ async function insertVideo(video, showId) {
         title: snippet.title,
         youtubeVideoId: videoId,
         videoUrl: `https://youtube.com/watch?v=${videoId}`,
-        thumbnail: snippet.thumbnails.high.url,
         publishedAt: snippet.publishedAt,
+        isActive: true,
+
+        // Image field must be object
+        thumbnail: {
+          url: snippet.thumbnails.high.url
+        },
+
+        // Reference field must be the _id of the show
         show: showId
       }
     }
@@ -89,6 +95,7 @@ async function insertVideo(video, showId) {
 
   console.log("Inserted:", snippet.title);
 }
+
 
 async function main() {
   const videos = await fetchRecentVideos();
