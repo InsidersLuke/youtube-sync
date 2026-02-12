@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const CHANNEL_ID = process.env.CHANNEL_ID;
 const WIX_API_KEY = process.env.WIX_API_KEY;
