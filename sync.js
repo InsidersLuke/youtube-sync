@@ -99,8 +99,9 @@ async function insertVideo(video, showId) {
 
 
 async function main() {
-  const videos = await fetchRecentVideos();
+  console.log("Inside main()");
 
+  const videos = await fetchRecentVideos();
   console.log("Videos returned from YouTube:", videos.length);
 
   for (const video of videos) {
@@ -124,8 +125,6 @@ async function main() {
 
     await insertVideo(video, showId);
   }
-  async function main() {
-  console.log("Inside main()");
 }
 
 main();
