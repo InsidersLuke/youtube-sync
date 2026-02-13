@@ -72,29 +72,26 @@ async function insertVideo(video, showId) {
         videoUrl: `https://youtube.com/watch?v=${videoId}`,
         publishedAt: snippet.publishedAt,
         isActive: true,
-
-        // Image field must be object
-        thumbnail: {
-          url: snippet.thumbnails.high.url
-        },
-
-        // Reference field must be the _id of the show
+        thumbnail: { url: snippet.thumbnails.high.url },
         show: showId
       }
     }
   };
 
-  await fetch(`https://www.wixapis.com/data/v2/items`, {
+  const response = await fetch(`https://www.wixapis.com/data/v2/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": WIX_API_KEY,
+      "Authorization": `Bearer ${WIX_API_KEY}`, // ⚠️ Important change
       "wix-site-id": WIX_SITE_ID
     },
     body: JSON.stringify(body)
   });
 
-  console.log("Inserted:", snippet.title);
+  const result = await response.text();
+
+  console.log("Wix response status:", response.status);
+  console.log("Wix response body:", result);
 }
 
 
