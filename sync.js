@@ -4,7 +4,8 @@ const WIX_API_KEY = process.env.WIX_API_KEY;
 const WIX_SITE_ID = process.env.WIX_SITE_ID;
 
 const SHOW_KEYWORDS = [
-  { keyword: "The Insiders Show", showId: "14ef63df-3b78-4cee-a3d7-da89fc7fc871" }
+  { keyword: "The Insiders Show", showId: "14ef63df-3b78-4cee-a3d7-da89fc7fc871" },
+  { keyword: "The Riedell Report", showId: "d92e36f3-7256-4148-99d1-885ac3b7c9b6" }
 ];
 
 async function fetchRecentVideos() {
