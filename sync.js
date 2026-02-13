@@ -7,7 +7,10 @@ const WIX_SITE_ID = process.env.WIX_SITE_ID;
 
 const SHOW_KEYWORDS = [
   { keyword: "The Insiders Show", showId: "14ef63df-3b78-4cee-a3d7-da89fc7fc871" },
-  { keyword: "The Riedell Report", showId: "d92e36f3-7256-4148-99d1-885ac3b7c9b6" }
+  { keyword: "The Riedell Report", showId: "d92e36f3-7256-4148-99d1-885ac3b7c9b6" },
+  { keyword: "Southern Fried Baseball", showId: "c57a20f1-f1ac-401d-8f25-e33bb673fa22" },
+  { keyword: "CBC Radio", showId: "b82116e1-bb39-45a3-aaab-bc63543d59b0" },
+  { keyword: "First Pitch Live", showId: "100d4451-d38c-4f33-b71c-c746bd397930" }
 ];
 
 async function fetchRecentVideos() {
