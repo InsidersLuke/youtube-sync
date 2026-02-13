@@ -66,15 +66,17 @@ async function insertVideo(video, showId) {
   const body = {
     dataCollectionId: "YouTubeVideos",
     dataItem: {
-      data: {
-        title: snippet.title,
-        youtubeVideoId: videoId,
-        videoUrl: `https://youtube.com/watch?v=${videoId}`,
-        publishedAt: snippet.publishedAt,
-        isActive: true,
-        thumbnail: { url: snippet.thumbnails.high.url },
-        show: showId
-      }
+data: {
+  title: snippet.title,
+  youtubeVideoId: videoId,
+  videoUrl: `https://youtube.com/watch?v=${videoId}`,
+  publishedAt: new Date(snippet.publishedAt),
+  isActive: true,
+  thumbnail: {
+    url: snippet.thumbnails.high.url
+  },
+  show: showId
+}
     }
   };
 
