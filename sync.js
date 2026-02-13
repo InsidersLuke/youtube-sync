@@ -99,14 +99,26 @@ async function insertVideo(video, showId) {
 async function main() {
   const videos = await fetchRecentVideos();
 
+  console.log("Videos returned from YouTube:", videos.length);
+
   for (const video of videos) {
     const videoId = video.id.videoId;
     const title = video.snippet.title;
 
-    if (await videoExists(videoId)) continue;
+    console.log("Checking:", title);
+
+    const exists = await videoExists(videoId);
+    console.log("Already exists?", exists);
+
+    if (exists) continue;
 
     const showId = matchShow(title);
-    if (!showId) continue;
+    console.log("Matched show ID:", showId);
+
+    if (!showId) {
+      console.log("No matching show keyword found.");
+      continue;
+    }
 
     await insertVideo(video, showId);
   }
