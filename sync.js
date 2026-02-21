@@ -13,6 +13,10 @@ const SHOW_KEYWORDS = [
   { keyword: "First Pitch Live", showId: "100d4451-d38c-4f33-b71c-c746bd397930" }
 ];
 
+const adjustedDate = new Date(snippet.publishedAt);
+adjustedDate.setHours(adjustedDate.getHours() + 12);
+publishedAt: { $date: adjustedDate.toISOString() },
+
 async function fetchRecentVideos() {
   const publishedAfter = new Date(Date.now() - 24*60*60*1000).toISOString();
 
