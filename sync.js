@@ -1,4 +1,4 @@
-console.log("Script started", "Feb-12-debug");
+console.log("Script started", "Feb-21-debug");
 
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const CHANNEL_ID = process.env.CHANNEL_ID;
@@ -73,11 +73,9 @@ data: {
   title: snippet.title,
   youtubeVideoId: videoId,
   videoUrl: `https://youtube.com/watch?v=${videoId}`,
-  publishedAt: new Date(snippet.publishedAt),
+  publishedAt: snippet.publishedAt,
   isActive: true,
-  thumbnail: {
-    url: snippet.thumbnails.high.url
-  },
+  thumbnail:  snippet.thumbnails.high.url,
   show: showId
 }
     }
