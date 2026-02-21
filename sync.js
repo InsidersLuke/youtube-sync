@@ -16,7 +16,7 @@ const SHOW_KEYWORDS = [
 async function fetchRecentVideos() {
   const publishedAfter = new Date(Date.now() - 24*60*60*1000).toISOString();
 
-const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&order=date&type=video&maxResults=5&key=${YOUTUBE_API_KEY}`;
+const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&order=date&type=video&maxResults=25&key=${YOUTUBE_API_KEY}`;
 
   const res = await fetch(url);
   const data = await res.json();
