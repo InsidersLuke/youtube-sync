@@ -13,9 +13,6 @@ const SHOW_KEYWORDS = [
   { keyword: "First Pitch Live", showId: "100d4451-d38c-4f33-b71c-c746bd397930" }
 ];
 
-const adjustedDate = new Date(snippet.publishedAt);
-adjustedDate.setHours(adjustedDate.getHours() + 12);
-publishedAt: { $date: adjustedDate.toISOString() },
 
 async function fetchRecentVideos() {
   const publishedAfter = new Date(Date.now() - 24*60*60*1000).toISOString();
@@ -69,19 +66,22 @@ async function videoExists(videoId) {
 async function insertVideo(video, showId) {
   const videoId = video.id.videoId;
   const snippet = video.snippet;
+  
+  const adjustedDate = new Date(snippet.publishedAt);
+  adjustedDate.setHours(adjustedDate.getHours() + 12);
 
   const body = {
     dataCollectionId: "YouTubeVideos",
     dataItem: {
-data: {
-  title: snippet.title,
-  youtubeVideoId: videoId,
-  videoUrl: `https://youtube.com/watch?v=${videoId}`,
-  publishedAt: { $date: snippet.publishedAt},
-  isActive: true,
-  thumbnail:  snippet.thumbnails.high.url,
-  show: showId
-}
+      data: {
+        title: snippet.title,
+        youtubeVideoId: videoId,
+        videoUrl: `https://youtube.com/watch?v=${videoId}`,
+        publishedAt: { $date: adjustedDate.toISOString() },
+        isActive: true,
+        thumbnail: snippet.thumbnails.high.url,
+        show: showId
+      }
     }
   };
 
