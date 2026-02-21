@@ -73,7 +73,7 @@ data: {
   title: snippet.title,
   youtubeVideoId: videoId,
   videoUrl: `https://youtube.com/watch?v=${videoId}`,
-  publishedAt: snippet.publishedAt,
+  publishedAt: { $date: snippet.publishedAt},
   isActive: true,
   thumbnail:  snippet.thumbnails.high.url,
   show: showId
